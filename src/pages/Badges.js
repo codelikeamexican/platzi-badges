@@ -5,6 +5,7 @@ import './styles/Badges.css';
 import confLogo from '../images/badge-header.svg';
 import BadgesList from '../components/BadgesList';
 import api from '../api'
+import PageLoading from '../components/PageLoading';
 class Badges extends React.Component {
   state = {
     loading:true,
@@ -12,7 +13,7 @@ class Badges extends React.Component {
     data: undefined,
   };
   componentDidMount(){
-    this.fetchData();
+  //  this.fetchData();
   }
   fetchData = async ()=>{
     this.setState({loading: true, error:null});
@@ -25,7 +26,7 @@ class Badges extends React.Component {
   };
   render() {
       if(this.state.loading === true){
-        return 'Loading...';
+        return <PageLoading />;
       }
 
       
