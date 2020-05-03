@@ -9,6 +9,10 @@ class BadgeForm extends React.Component {
   render() {
     return (
       <div>
+         {this.props.error &&(
+            <p className="text-danger">  Upsi, try it again.{this.props.error.message}</p>
+          )}
+
         <h1>New Attendant</h1>
 
         <form onSubmit={this.props.onSubmit}>
@@ -70,6 +74,7 @@ class BadgeForm extends React.Component {
           <button onClick={this.handleClick} className="btn btn-primary">
             Save
           </button>
+         
         </form>
       </div>
     );
