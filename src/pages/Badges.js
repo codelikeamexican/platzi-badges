@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import './styles/Badges.css';
 import confLogo from '../images/badge-header.svg';
 import BadgesList from '../components/BadgesList';
-import api from '../api';
+import api from '../api'
 class Badges extends React.Component {
   state = {
     loading:true,
@@ -23,19 +23,12 @@ class Badges extends React.Component {
       this.setState({ loading: false, error: error });
     }
   };
-
-
   render() {
-    if(this.state.loading === true){
-      return 'Loading...';
-    }
-   
-    if (this.state.error){
-      return `Error: ${this.state.error.message}`;
-  }
-    
-    
-     
+      if(this.state.loading === true){
+        return 'Loading...';
+      }
+
+      
       return (
       <React.Fragment>
         <div className="Badges">
@@ -60,7 +53,7 @@ class Badges extends React.Component {
           <BadgesList badges={this.state.data} />
         </div>
       </React.Fragment>
-    );
+       );
   }
 }
 

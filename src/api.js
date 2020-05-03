@@ -25,8 +25,8 @@ const api = {
   badges: {
     list() {
       //throw new console.error("NotFound");
-      //return [];
-      return callApi('/badges');
+      return [];
+      //return callApi('/badges');
     },
     create(badge) {
       return callApi(`/badges`, {
