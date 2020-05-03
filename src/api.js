@@ -24,9 +24,9 @@ async function callApi(endpoint, options = {}) {
 const api = {
   badges: {
     list() {
-      throw new Error('500: Internal Server Error');
+      //throw new Error('500: Internal Server Error');
       //return [];
-      //return callApi('/badges');
+      return callApi('/badges');
     },
     create(badge) {
       return callApi(`/badges`, {
