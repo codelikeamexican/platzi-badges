@@ -7,6 +7,8 @@ import BadgesList from '../components/BadgesList';
 import api from '../api'
 import PageLoading from '../components/PageLoading';
 import PageError from '../components/PageError';
+import Loader from '../components/Loader';
+
 class Badges extends React.Component {
   state = {
     loading:true,
@@ -15,18 +17,19 @@ class Badges extends React.Component {
   };
   componentDidMount(){
     this.fetchData();
+    setInterval(this.fetchData, 5000);
   }
   fetchData = async ()=>{
     this.setState({loading: true, error:null});
     try{
       const data = await api.badges.list();
-      this.setState({ loading: false, data:data });
+      this.setState({ loading: true, data:data });
     }catch(error){
-      this.setState({ loading: false, error: error });
+      this.setState({ loading: true, error: error });
     }
   };
   render() {
-      if(this.state.loading === true){
+      if(this.state.loading === true && !this.state.data){
         return <PageLoading/>;
       }
 
@@ -57,6 +60,8 @@ class Badges extends React.Component {
           </div>
 
           <BadgesList badges={this.state.data} />
+
+          {this.state.loading && 'Loading..'}
         </div>
       </React.Fragment>
        );
